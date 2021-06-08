@@ -1,0 +1,61 @@
+﻿@page
+@model Legends_Razor.Pages.LegendList.UpsertModel
+@{
+}
+
+<br />
+<h2 class="text-info">@(Model.Legend.Id != Guid.Empty ? "Edit" : "Create")</h2>
+<br />
+<div class="border container" style="padding: 30px;">
+    <form method="post">
+        @if (Model.Legend.Id != Guid.Empty)
+        {
+            <input asp-for="Legend.Id" type="hidden" />
+        }
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Legend.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Legend.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Legend.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Legend.Country"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Legend.Country" class="form-control" />
+            </div>
+            <span asp-validation-for="Legend.Country" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Legend.SuperPower"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Legend.SuperPower" class="form-control" />
+            </div>
+            <span asp-validation-for="Legend.SuperPower" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-3 offset-2">
+                <button type="submit" value="Update" class="btn btn-primary form-control">
+                    @(Model.Legend.Id != Guid.Empty ? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Home</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
